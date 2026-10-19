@@ -9,7 +9,15 @@ app.use("/test",(req,res)=>{
     res.send("Hello from server")
 })
 
+//for request params
+
+// app.get("/user/:userId",(req,res)=>{
+//     console.log(req.params);
+//     res.send({firstName:"Saket",lastName:"Karn"})
+// })
+
 app.get("/user",(req,res)=>{
+    console.log(req.query);
     res.send({firstName:"Saket",lastName:"Karn"})
 })
 
