@@ -1,25 +1,21 @@
+const {adminAuth, userAuth}=require('./middlewares/auth')
+
 const express = require('express')
 const app = express()
 
-app.get("/user",(req,res,next)=>{
-    // res.send("Hello from response")
-    next()
-},
-(req,res,next)=>{
-    // res.send("Hello from response 2")
-    next()
-},
-(req,res,next)=>{
-    // res.send("Hello from response 3")
-    next()
-},
-(req,res,next)=>{
-    // res.send("Hello from response 4")
-    next()
-},
-(req,res,next)=>{
-    res.send("Hello from response 5")
-});
+app.use("/admin",adminAuth)
+
+app.get("/admin/getAllData",(req,res)=>{
+    res.send("All data received")
+})
+
+app.get("/admin/deleteAllData",(req,res)=>{
+    res.send("All data deleted")
+})
+
+app.use("/user",userAuth,(req,res)=>{
+    res.send("User Data Sent")
+})
 
 
 app.listen(3000,()=>{
